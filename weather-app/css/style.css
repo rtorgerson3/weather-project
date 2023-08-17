@@ -1,0 +1,89 @@
+.background-image {
+  background-image: url("../images/lawn.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  .container {
+    font-family: "Solis";
+    padding-top: 100px;
+    padding-bottom: 100px;
+  }
+  .weather-card {
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.5);
+  }
+}
+
+.main-cities a {
+  text-decoration: none;
+  padding-right: 10px;
+}
+.main-cities {
+  color: #0e6efd;
+  margin-top: 30px;
+  margin-bottom: 15px;
+  margin-left: 30px;
+}
+.main-cities:hover {
+  cursor: pointer;
+}
+
+.temp-scale {
+  text-align: right;
+  margin-top: 30px;
+  margin-right: 30px;
+  font-size: 20px;
+}
+.temp-scale a {
+  text-decoration: none;
+}
+
+.search-box {
+  margin-left: 30px;
+  width: 300px;
+  height: 30px;
+}
+
+.city-information h2 {
+  margin-top: 60px;
+  margin-left: 30px;
+  font-size: 60px;
+}
+
+.city-information h4 {
+  margin-top: 1px;
+  margin-bottom: 1px;
+  margin-left: 30px;
+  font-size: 22px;
+  font-weight: normal;
+}
+.current-temp i {
+  font-size: 120px;
+}
+.current-temp {
+  margin-top: 60px;
+  padding-left: 0px;
+}
+.current-degrees {
+  font-size: 100px;
+  margin-left: 20px;
+}
+.day-box {
+  margin-top: 75px;
+  margin-bottom: 30px;
+  font-size: 20px;
+  text-align: center;
+}
+
+.day-box i {
+  font-size: 35px;
+}
+
+.forecast-range {
+  font-size: 15px;
+}
+.footnote {
+  text-align: center;
+  margin-bottom: 10px;
+  font-size: 13px;
+}
