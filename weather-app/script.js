@@ -19,18 +19,24 @@ function updateTime(timestamp) {
 }
 function showTemperature(response) {
   let currentCity = document.querySelector("#current-city-searched");
-  currentCity.innerHTML = `${response.data.city}`;
+  let currentDayAndTime = document.querySelector("#currentDayAndTime");
   let temperature = Math.round(response.data.temperature.current);
   let humidity = response.data.temperature.humidity;
+  let tempIcon = response.data.condition.icon_url;
   let windSpeed = Math.round(response.data.wind.speed);
   let currentTemperature = document.querySelector(".current-degrees");
-  currentTemperature.innerHTML = `${temperature}°`;
   let currentHumidity = document.querySelector(".current-humidity");
-  currentHumidity.innerHTML = `Humidity: ${humidity}%`;
   let currentWindSpeed = document.querySelector(".current-wind-speed");
-  currentWindSpeed.innerHTML = `Wind: ${windSpeed}mph`;
-  let currentDayAndTime = document.querySelector("#currentDayAndTime");
+  let currentTempIcon = document.querySelector("#current-temp-iocn");
+  currentCity.innerHTML = `${response.data.city}`;
   currentDayAndTime.innerHTML = updateTime(response.data.time * 1000);
+  currentTemperature.innerHTML = `${temperature}°`;
+  currentHumidity.innerHTML = `Humidity: ${humidity}%`;
+  currentWindSpeed.innerHTML = `Wind: ${windSpeed}mph`;
+  currentTempIcon.setAttribute(
+    "src",
+    `http://shecodes-assets.s3.amazonaws.com/api/weather/icons/clear-sky-night.png`
+  );
 }
 function presetSanDiego(event) {
   event.preventDefault();
