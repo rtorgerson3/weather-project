@@ -1,6 +1,5 @@
-function updateTime() {
-  let dayAndTime = new Date();
-  let currentDayAndTime = document.querySelector("#currentDayAndTime");
+function updateTime(timestamp) {
+  let dayAndTime = new Date(timestamp);
   let days = [
     "Sunday",
     "Monday",
@@ -16,10 +15,8 @@ function updateTime() {
   if (minutes < 10) {
     minutes = `0${minutes}`;
   }
-  currentDayAndTime.innerHTML = `${day} - ${hours}:${minutes}`;
+  return `${day} - ${hours}:${minutes}`;
 }
-updateTime();
-
 function showTemperature(response) {
   let currentCity = document.querySelector("#current-city-searched");
   currentCity.innerHTML = `${response.data.city}`;
@@ -32,6 +29,8 @@ function showTemperature(response) {
   currentHumidity.innerHTML = `Humidity: ${humidity}%`;
   let currentWindSpeed = document.querySelector(".current-wind-speed");
   currentWindSpeed.innerHTML = `Wind: ${windSpeed}mph`;
+  let currentDayAndTime = document.querySelector("#currentDayAndTime");
+  currentDayAndTime.innerHTML = updateTime(response.data.time * 1000);
 }
 function presetSanDiego(event) {
   event.preventDefault();
