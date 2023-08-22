@@ -22,7 +22,7 @@ function showTemperature(response) {
   currentCity.innerHTML = `${response.data.city}`;
   let temperature = Math.round(response.data.temperature.current);
   let humidity = response.data.temperature.humidity;
-  let windSpeed = response.data.wind.speed;
+  let windSpeed = Math.round(response.data.wind.speed);
   let currentTemperature = document.querySelector(".current-degrees");
   currentTemperature.innerHTML = `${temperature}°`;
   let currentHumidity = document.querySelector(".current-humidity");
