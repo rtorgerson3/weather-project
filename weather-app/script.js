@@ -15,7 +15,7 @@ function updateTime(timestamp) {
   if (minutes < 10) {
     minutes = `0${minutes}`;
   }
-  return `Last Updated:${day} - ${hours}:${minutes}`;
+  return `Last Updated: ${day} ${hours}:${minutes}`;
 }
 function showTemperature(response) {
   let currentCity = document.querySelector("#current-city-searched");
