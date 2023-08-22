@@ -22,12 +22,12 @@ function showTemperature(response) {
   let currentDayAndTime = document.querySelector("#currentDayAndTime");
   let temperature = Math.round(response.data.temperature.current);
   let humidity = response.data.temperature.humidity;
-  let tempIcon = response.data.condition.icon_url;
   let windSpeed = Math.round(response.data.wind.speed);
+  let tempIcon = response.data.condition.icon_url;
   let currentTemperature = document.querySelector(".current-degrees");
   let currentHumidity = document.querySelector(".current-humidity");
   let currentWindSpeed = document.querySelector(".current-wind-speed");
-  let currentTempIcon = document.querySelector("#current-temp-iocn");
+  let currentTempIcon = document.querySelector("#current-temp-icon");
   currentCity.innerHTML = `${response.data.city}`;
   currentDayAndTime.innerHTML = updateTime(response.data.time * 1000);
   currentTemperature.innerHTML = `${temperature}°`;
