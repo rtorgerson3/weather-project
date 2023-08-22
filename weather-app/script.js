@@ -19,9 +19,9 @@ updateTime();
 
 function showTemperature(response) {
   let currentCity = document.querySelector("#current-city-searched");
-  currentCity.innerHTML = `${response.data.name}`;
-  let temperature = Math.round(response.data.main.temp);
-  let humidity = response.data.main.humidity;
+  currentCity.innerHTML = `${response.data.city}`;
+  let temperature = Math.round(response.data.temperature.current);
+  let humidity = response.data.temperature.humidity;
   let windSpeed = response.data.wind.speed;
   let currentTemperature = document.querySelector(".current-degrees");
   currentTemperature.innerHTML = `${temperature}°`;
@@ -32,7 +32,7 @@ function showTemperature(response) {
 }
 function presetSanDiego(event) {
   event.preventDefault();
-  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=San%20Diego&units=imperial&appid=${apiKey}`;
+  let apiUrl = `https://api.shecodes.io/weather/v1/current?query=San%20Diego&key=${apiKey}&units=imperial`;
   axios.get(apiUrl).then(showTemperature);
   updateTime();
 }
@@ -42,7 +42,7 @@ sanDiegoPosition.addEventListener("click", presetSanDiego);
 
 function presetBismarck(event) {
   event.preventDefault();
-  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=Bismarck&units=imperial&appid=${apiKey}`;
+  let apiUrl = `https://api.shecodes.io/weather/v1/current?query=Bismarck&key=${apiKey}&units=imperial`;
   axios.get(apiUrl).then(showTemperature);
   updateTime();
 }
@@ -52,7 +52,7 @@ bismarckPosition.addEventListener("click", presetBismarck);
 
 function presetBarcelona(event) {
   event.preventDefault();
-  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=Barcelona&units=imperial&appid=${apiKey}`;
+  let apiUrl = `https://api.shecodes.io/weather/v1/current?query=Barcelona&key=${apiKey}&units=imperial`;
   axios.get(apiUrl).then(showTemperature);
   updateTime();
 }
@@ -62,7 +62,7 @@ barcelonaPosition.addEventListener("click", presetBarcelona);
 
 function presetMykolaiv(event) {
   event.preventDefault();
-  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=Mykolaiv&units=imperial&appid=${apiKey}`;
+  let apiUrl = `https://api.shecodes.io/weather/v1/current?query=Mykolaiv&key=${apiKey}&units=imperial`;
   axios.get(apiUrl).then(showTemperature);
   updateTime();
 }
@@ -73,18 +73,19 @@ mykolaivPosition.addEventListener("click", presetMykolaiv);
 function enterCity(event) {
   event.preventDefault();
   let currentCitySearchBox = document.querySelector("#current-city-search-box");
-  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${currentCitySearchBox.value}&units=imperial&appid=${apiKey}`;
+
+  let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${currentCitySearchBox.value}&key=${apiKey}&units=imperial`;
   axios.get(apiUrl).then(showTemperature);
   updateTime();
 }
 let searchForm = document.querySelector("#search-form");
 searchForm.addEventListener("submit", enterCity);
 
-let apiKey = "445905dadb3d2b0c6f1b916c9d0e3860";
+let apiKey = "0065c92bb38o03d36835f9t248bba38f";
 function currentLocation(position) {
   let lat = position.coords.latitude;
   let lon = position.coords.longitude;
-  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=imperial&appid=${apiKey}`;
+  let apiUrl = `https://api.shecodes.io/weather/v1/current?lon=${lon}&lat=${lat}&key=${apiKey}&units=imperial`;
   axios.get(apiUrl).then(showTemperature);
   updateTime();
 }
