@@ -13,6 +13,9 @@ function updateTime() {
   let day = days[dayAndTime.getDay()];
   let hours = dayAndTime.getHours();
   let minutes = dayAndTime.getMinutes();
+  if (minutes < 10) {
+    minutes = `0${minutes}`;
+  }
   currentDayAndTime.innerHTML = `${day} - ${hours}:${minutes}`;
 }
 updateTime();
