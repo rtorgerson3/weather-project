@@ -23,7 +23,6 @@ function showTemperature(response) {
   let temperature = Math.round(response.data.temperature.current);
   let humidity = response.data.temperature.humidity;
   let windSpeed = Math.round(response.data.wind.speed);
-  let tempIcon = response.data.condition.icon_url;
   let currentTemperature = document.querySelector(".current-degrees");
   let currentHumidity = document.querySelector(".current-humidity");
   let currentWindSpeed = document.querySelector(".current-wind-speed");
@@ -35,7 +34,7 @@ function showTemperature(response) {
   currentWindSpeed.innerHTML = `Wind: ${windSpeed}mph`;
   currentTempIcon.setAttribute(
     "src",
-    `http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${tempIcon}`
+    `http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${response.data.condition.icon_url}`
   );
 }
 function presetSanDiego(event) {
