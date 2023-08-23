@@ -18,7 +18,6 @@ function updateTime(timestamp) {
   return `Last Updated: ${day} ${hours}:${minutes}`;
 }
 function showTemperature(response) {
-  console.log(response.data);
   let currentCity = document.querySelector("#current-city-searched");
   let currentDayAndTime = document.querySelector("#currentDayAndTime");
   let temperature = Math.round(response.data.temperature.current);
@@ -100,3 +99,12 @@ function getPosition(event) {
 
 let currentLocationForm = document.querySelector(".current-location-button");
 currentLocationForm.addEventListener("click", getPosition);
+
+function showCelsiusTemperature(event) {
+  event.preventDefault();
+  let celsiusTemperature = ((72 - 32) * 5) / 9;
+  let currentTemperature = document.querySelector(".current-degrees");
+  currentTemperature.innerHTML = celsiusTemperature;
+}
+let celsiusLink = document.querySelector(".celsius");
+celsiusLink.addEventListener("click", showCelsiusTemperature);
