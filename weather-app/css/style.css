@@ -68,6 +68,11 @@
   font-size: 100px;
   margin-left: 20px;
 }
+
+#current-temp-icon {
+  width: 150px;
+  height: 150px;
+}
 .day-box {
   margin-top: 75px;
   margin-bottom: 30px;

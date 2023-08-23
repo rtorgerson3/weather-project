@@ -18,6 +18,7 @@ function updateTime(timestamp) {
   return `Last Updated: ${day} ${hours}:${minutes}`;
 }
 function showTemperature(response) {
+  console.log(response.data);
   let currentCity = document.querySelector("#current-city-searched");
   let currentDayAndTime = document.querySelector("#currentDayAndTime");
   let temperature = Math.round(response.data.temperature.current);
@@ -32,10 +33,7 @@ function showTemperature(response) {
   currentTemperature.innerHTML = `${temperature}°`;
   currentHumidity.innerHTML = `Humidity: ${humidity}%`;
   currentWindSpeed.innerHTML = `Wind: ${windSpeed}mph`;
-  currentTempIcon.setAttribute(
-    "src",
-    `http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${response.data.condition.icon_url}`
-  );
+  currentTempIcon.setAttribute("src", `${response.data.condition.icon_url}`);
 }
 function presetSanDiego(event) {
   event.preventDefault();
