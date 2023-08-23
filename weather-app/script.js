@@ -27,6 +27,9 @@ function showTemperature(response) {
   let currentHumidity = document.querySelector(".current-humidity");
   let currentWindSpeed = document.querySelector(".current-wind-speed");
   let currentTempIcon = document.querySelector("#current-temp-icon");
+
+  farenheitTemperature = response.data.temperature.current;
+
   currentCity.innerHTML = `${response.data.city}`;
   currentDayAndTime.innerHTML = updateTime(response.data.time * 1000);
   currentTemperature.innerHTML = `${temperature}°`;
@@ -75,7 +78,6 @@ let mykolaivPosition = document.querySelector(".mykolaiv");
 mykolaivPosition.addEventListener("click", presetMykolaiv);
 
 function enterCity(event) {
-  event.preventDefault();
   let currentCitySearchBox = document.querySelector("#current-city-search-box");
 
   let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${currentCitySearchBox.value}&key=${apiKey}&units=imperial`;
@@ -100,11 +102,13 @@ function getPosition(event) {
 let currentLocationForm = document.querySelector(".current-location-button");
 currentLocationForm.addEventListener("click", getPosition);
 
+let farenheitTemperature = null;
+
 function showCelsiusTemperature(event) {
   event.preventDefault();
-  let celsiusTemperature = ((72 - 32) * 5) / 9;
   let currentTemperature = document.querySelector(".current-degrees");
-  currentTemperature.innerHTML = celsiusTemperature;
+  let celsiusTemperature = ((farenheitTemperature - 32) * 5) / 9;
+  currentTemperature.innerHTML = `${Math.round(celsiusTemperature)}°`;
 }
 let celsiusLink = document.querySelector(".celsius");
 celsiusLink.addEventListener("click", showCelsiusTemperature);
