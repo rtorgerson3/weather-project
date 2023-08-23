@@ -35,7 +35,7 @@ function showTemperature(response) {
   currentWindSpeed.innerHTML = `Wind: ${windSpeed}mph`;
   currentTempIcon.setAttribute(
     "src",
-    `http://shecodes-assets.s3.amazonaws.com/api/weather/icons/clear-sky-night.png`
+    `http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${tempIcon}`
   );
 }
 function presetSanDiego(event) {
