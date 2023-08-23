@@ -61,17 +61,19 @@
   font-size: 120px;
 }
 .current-temp {
-  margin-top: 60px;
+  margin-top: 80px;
   padding-left: 0px;
 }
 .current-degrees {
   font-size: 100px;
   margin-left: 20px;
+  padding-top: 20px;
 }
 
 #current-temp-icon {
   width: 150px;
   height: 150px;
+  padding-bottom: 40px;
 }
 .day-box {
   margin-top: 75px;
