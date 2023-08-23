@@ -83,7 +83,6 @@ function enterCity(event) {
   axios.get(apiUrl).then(showTemperature);
   updateTime();
 }
-enterCity("New York");
 let searchForm = document.querySelector("#search-form");
 searchForm.addEventListener("submit", enterCity);
 
