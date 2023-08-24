@@ -15,15 +15,19 @@ function updateTime(timestamp) {
   if (minutes < 10) {
     minutes = `0${minutes}`;
   }
-  return `Last Updated: ${day} ${hours}:${minutes}`;
+  return `Last Updated - ${day} ${hours}:${minutes}`;
 }
 function showTemperature(response) {
   let currentCity = document.querySelector("#current-city-searched");
   let currentDayAndTime = document.querySelector("#currentDayAndTime");
   let temperature = Math.round(response.data.temperature.current);
+  let temperatureDescription = response.data.condition.description;
   let humidity = response.data.temperature.humidity;
   let windSpeed = Math.round(response.data.wind.speed);
   let currentTemperature = document.querySelector(".current-degrees");
+  let currentTemperatureDescription = document.querySelector(
+    "#current-temperature-description"
+  );
   let currentHumidity = document.querySelector(".current-humidity");
   let currentWindSpeed = document.querySelector(".current-wind-speed");
   let currentTempIcon = document.querySelector("#current-temp-icon");
@@ -33,6 +37,7 @@ function showTemperature(response) {
   currentCity.innerHTML = `${response.data.city}`;
   currentDayAndTime.innerHTML = updateTime(response.data.time * 1000);
   currentTemperature.innerHTML = `${temperature}°`;
+  currentTemperatureDescription.innerHTML = `${temperatureDescription}`;
   currentHumidity.innerHTML = `Humidity: ${humidity}%`;
   currentWindSpeed.innerHTML = `Wind: ${windSpeed}mph`;
   currentTempIcon.setAttribute("src", `${response.data.condition.icon_url}`);
