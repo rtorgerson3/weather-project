@@ -28,7 +28,7 @@ function showTemperature(response) {
   let currentWindSpeed = document.querySelector(".current-wind-speed");
   let currentTempIcon = document.querySelector("#current-temp-icon");
 
-  farenheitTemperature = response.data.temperature.current;
+  fahrenheitTemperature = response.data.temperature.current;
 
   currentCity.innerHTML = `${response.data.city}`;
   currentDayAndTime.innerHTML = updateTime(response.data.time * 1000);
@@ -101,23 +101,23 @@ function getPosition(event) {
 let currentLocationForm = document.querySelector(".current-location-button");
 currentLocationForm.addEventListener("click", getPosition);
 
-let farenheitTemperature = null;
+let fahrenheitTemperature = null;
 
 function showCelsiusTemperature(event) {
   event.preventDefault();
   let currentTemperature = document.querySelector(".current-degrees");
-  let celsiusTemperature = ((farenheitTemperature - 32) * 5) / 9;
+  let celsiusTemperature = ((fahrenheitTemperature - 32) * 5) / 9;
   currentTemperature.innerHTML = `${Math.round(celsiusTemperature)}°`;
 }
 
-function showFarenheitTemperature(event) {
+function showFahrenheitTemperature(event) {
   event.preventDefault();
   let currentTemperature = document.querySelector(".current-degrees");
-  currentTemperature.innerHTML = `${Math.round(farenheitTemperature)}°`;
+  currentTemperature.innerHTML = `${Math.round(fahrenheitTemperature)}°`;
 }
 
 let celsiusLink = document.querySelector("#celsius");
 celsiusLink.addEventListener("click", showCelsiusTemperature);
 
-let farenheitLink = document.querySelector("#farenheit");
-farenheitLink.addEventListener("click", showFarenheitTemperature);
+let fahrenheitLink = document.querySelector("#fahrenheit");
+fahrenheitLink.addEventListener("click", showFahrenheitTemperature);
