@@ -36,8 +36,11 @@
 }
 .temp-scale a {
   text-decoration: none;
+  cursor: default;
 }
-
+.temp-scale .active {
+  color: black;
+}
 .search-box {
   margin-left: 30px;
   width: 300px;

@@ -106,12 +106,16 @@ let fahrenheitTemperature = null;
 function showCelsiusTemperature(event) {
   event.preventDefault();
   let currentTemperature = document.querySelector(".current-degrees");
+  fahrenheitLink.classList.remove("active");
+  celsiusLink.classList.add("active");
   let celsiusTemperature = ((fahrenheitTemperature - 32) * 5) / 9;
   currentTemperature.innerHTML = `${Math.round(celsiusTemperature)}°`;
 }
 
 function showFahrenheitTemperature(event) {
   event.preventDefault();
+  fahrenheitLink.classList.add("active");
+  celsiusLink.classList.remove("active");
   let currentTemperature = document.querySelector(".current-degrees");
   currentTemperature.innerHTML = `${Math.round(fahrenheitTemperature)}°`;
 }
