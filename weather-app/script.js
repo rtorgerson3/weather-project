@@ -116,8 +116,8 @@ function showFarenheitTemperature(event) {
   currentTemperature.innerHTML = `${Math.round(farenheitTemperature)}°`;
 }
 
-let celsiusLink = document.querySelector(".celsius");
+let celsiusLink = document.querySelector("#celsius");
 celsiusLink.addEventListener("click", showCelsiusTemperature);
 
-let farenheitLink = document.querySelector(".farenheit");
+let farenheitLink = document.querySelector("#farenheit");
 farenheitLink.addEventListener("click", showFarenheitTemperature);
