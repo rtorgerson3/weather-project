@@ -79,7 +79,6 @@ mykolaivPosition.addEventListener("click", presetMykolaiv);
 
 function enterCity(event) {
   let currentCitySearchBox = document.querySelector("#current-city-search-box");
-
   let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${currentCitySearchBox.value}&key=${apiKey}&units=imperial`;
   axios.get(apiUrl).then(showTemperature);
   updateTime();
@@ -110,5 +109,15 @@ function showCelsiusTemperature(event) {
   let celsiusTemperature = ((farenheitTemperature - 32) * 5) / 9;
   currentTemperature.innerHTML = `${Math.round(celsiusTemperature)}°`;
 }
+
+function showFarenheitTemperature(event) {
+  event.preventDefault();
+  let currentTemperature = document.querySelector(".current-degrees");
+  currentTemperature.innerHTML = `${Math.round(farenheitTemperature)}°`;
+}
+
 let celsiusLink = document.querySelector(".celsius");
 celsiusLink.addEventListener("click", showCelsiusTemperature);
+
+let farenheitLink = document.querySelector(".farenheit");
+farenheitLink.addEventListener("click", showFarenheitTemperature);
