@@ -15,13 +15,17 @@ function updateTime(timestamp) {
   if (minutes < 10) {
     minutes = `0${minutes}`;
   }
-  return `Last Updated - ${day} ${hours}:${minutes}`;
+  return `Last updated: ${day} ${hours}:${minutes}`;
 }
+let apiKey = "0065c92bb38o03d36835f9t248bba38f";
 function showTemperature(response) {
   let currentCity = document.querySelector("#current-city-searched");
   let currentDayAndTime = document.querySelector("#currentDayAndTime");
   let temperature = Math.round(response.data.temperature.current);
   let temperatureDescription = response.data.condition.description;
+  temperatureDescription =
+    temperatureDescription.charAt(0).toUpperCase() +
+    temperatureDescription.slice(1);
   let humidity = response.data.temperature.humidity;
   let windSpeed = Math.round(response.data.wind.speed);
   let currentTemperature = document.querySelector(".current-degrees");
@@ -42,6 +46,13 @@ function showTemperature(response) {
   currentWindSpeed.innerHTML = `Wind: ${windSpeed}mph`;
   currentTempIcon.setAttribute("src", `${response.data.condition.icon_url}`);
 }
+function presetSydney(event) {
+  let apiUrl = `https://api.shecodes.io/weather/v1/current?query=Sydney&key=${apiKey}&units=imperial`;
+  axios.get(apiUrl).then(showTemperature);
+  updateTime();
+}
+presetSydney();
+
 function presetSanDiego(event) {
   event.preventDefault();
   let apiUrl = `https://api.shecodes.io/weather/v1/current?query=San%20Diego&key=${apiKey}&units=imperial`;
@@ -91,7 +102,6 @@ function enterCity(event) {
 let searchForm = document.querySelector("#search-form");
 searchForm.addEventListener("submit", enterCity);
 
-let apiKey = "0065c92bb38o03d36835f9t248bba38f";
 function currentLocation(position) {
   let lat = position.coords.latitude;
   let lon = position.coords.longitude;
