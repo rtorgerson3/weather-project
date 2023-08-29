@@ -18,6 +18,34 @@ function updateTime(timestamp) {
   return `Last updated: ${day} ${hours}:${minutes}`;
 }
 let apiKey = "0065c92bb38o03d36835f9t248bba38f";
+
+function showForecast(response) {
+  let forecastElement = document.querySelector("#forecast");
+
+  let forecastHTML = '<div class="row">';
+  let days = ["Thursday", "Friday", "Saturday"];
+  days.forEach(function (day) {
+    forecastHTML =
+      forecastHTML +
+      `
+    <div class="col-2">
+      <div class="forecast-day">${day}</div>
+          <i class="fa-solid fa-cloud"></i>
+            <div class="forecast-range">
+              <span class="temperature-max">60°</span>
+              <span class="temperature-min">50°</span>
+            </div>
+    </div>`;
+  });
+  forecastHTML = forecastHTML + `</div>`;
+  forecastElement.innerHTML = forecastHTML;
+}
+
+function getForecast(response) {
+  console.log(response);
+  let apiUrl = `https://api.shecodes.io/weather/v1/forecast?query=${response}&key=${apiKey}&units=imperial`;
+  axios.get(apiUrl).then(showForecast);
+}
 function showTemperature(response) {
   let currentCity = document.querySelector("#current-city-searched");
   let currentDayAndTime = document.querySelector("#currentDayAndTime");
@@ -45,30 +73,9 @@ function showTemperature(response) {
   currentHumidity.innerHTML = `Humidity: ${humidity}%`;
   currentWindSpeed.innerHTML = `Wind: ${windSpeed}mph`;
   currentTempIcon.setAttribute("src", `${response.data.condition.icon_url}`);
+  getForecast(response.data.city);
 }
 
-function showForecast() {
-  let forecastElement = document.querySelector("#forecast");
-
-  let forecastHTML = '<div class="row">';
-  let days = ["Thursday", "Friday", "Saturday"];
-  days.forEach(function (day) {
-    forecastHTML =
-      forecastHTML +
-      `
-    <div class="col-2">
-      <div class="forecast-day">${day}</div>
-          <i class="fa-solid fa-cloud"></i>
-            <div class="forecast-range">
-              <span class="temperature-max">60°</span>
-              <span class="temperature-min">50°</span>
-            </div>
-    </div>`;
-  });
-  forecastHTML = forecastHTML + `</div>`;
-  forecastElement.innerHTML = forecastHTML;
-}
-showForecast();
 function presetSydney(event) {
   let apiUrl = `https://api.shecodes.io/weather/v1/current?query=Sydney&key=${apiKey}&units=imperial`;
   axios.get(apiUrl).then(showTemperature);
