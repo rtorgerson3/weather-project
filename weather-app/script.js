@@ -57,7 +57,7 @@ function showForecast() {
       forecastHTML +
       `
     <div class="col-2">
-      <div class="forecast-day">Monday</div>
+      <div class="forecast-day">${day}</div>
           <i class="fa-solid fa-cloud"></i>
             <div class="forecast-range">
               <span class="temperature-max">60°</span>
