@@ -46,6 +46,29 @@ function showTemperature(response) {
   currentWindSpeed.innerHTML = `Wind: ${windSpeed}mph`;
   currentTempIcon.setAttribute("src", `${response.data.condition.icon_url}`);
 }
+
+function showForecast() {
+  let forecastElement = document.querySelector("#forecast");
+
+  let forecastHTML = '<div class="row">';
+  let days = ["Thursday", "Friday", "Saturday"];
+  days.forEach(function (day) {
+    forecastHTML =
+      forecastHTML +
+      `
+    <div class="col-2">
+      <div class="forecast-day">Monday</div>
+          <i class="fa-solid fa-cloud"></i>
+            <div class="forecast-range">
+              <span class="temperature-max">60°</span>
+              <span class="temperature-min">50°</span>
+            </div>
+    </div>`;
+  });
+  forecastHTML = forecastHTML + `</div>`;
+  forecastElement.innerHTML = forecastHTML;
+}
+showForecast();
 function presetSydney(event) {
   let apiUrl = `https://api.shecodes.io/weather/v1/current?query=Sydney&key=${apiKey}&units=imperial`;
   axios.get(apiUrl).then(showTemperature);
