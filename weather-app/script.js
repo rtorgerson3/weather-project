@@ -29,8 +29,8 @@ function showForecast(response) {
     forecastHTML =
       forecastHTML +
       `
-    <div class="col-2">
-      <div class="forecast-day">${forecastDay}</div>
+    <div class="col">
+      <div class="forecast-day">${forecastDay.time}</div>
           <img src ="http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${forecastDay.condition.icon}.png"/>
             <div class="forecast-range">
               <span class="temperature-max">${forecastDay.temperature.maximum}</span>
