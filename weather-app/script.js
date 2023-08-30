@@ -20,20 +20,21 @@ function updateTime(timestamp) {
 let apiKey = "0065c92bb38o03d36835f9t248bba38f";
 
 function showForecast(response) {
+  let forecast = response.data.daily;
+
   let forecastElement = document.querySelector("#forecast");
 
   let forecastHTML = '<div class="row">';
-  let days = ["Thursday", "Friday", "Saturday"];
-  days.forEach(function (day) {
+  forecast.forEach(function (forecastDay) {
     forecastHTML =
       forecastHTML +
       `
     <div class="col-2">
-      <div class="forecast-day">${day}</div>
-          <i class="fa-solid fa-cloud"></i>
+      <div class="forecast-day">${forecastDay}</div>
+          <img src ="http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${forecastDay.condition.icon}.png"/>
             <div class="forecast-range">
-              <span class="temperature-max">60°</span>
-              <span class="temperature-min">50°</span>
+              <span class="temperature-max">${forecastDay.temperature.maximum}</span>
+              <span class="temperature-min">${forecastDay.temperature.minimum}</span>
             </div>
     </div>`;
   });
