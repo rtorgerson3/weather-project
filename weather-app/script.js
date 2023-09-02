@@ -21,7 +21,15 @@ function updateTime(timestamp) {
 function forecastFormatDay(timestamp) {
   let date = new Date(timestamp * 1000);
   let day = date.getDay();
-  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+  let days = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+  ];
   return days[day];
 }
 let apiKey = "0065c92bb38o03d36835f9t248bba38f";
@@ -33,7 +41,7 @@ function showForecast(response) {
 
   let forecastHTML = '<div class="row">';
   forecast.forEach(function (forecastDay, index) {
-    if (index < 5) {
+    if (index < 6) {
       forecastHTML =
         forecastHTML +
         `
