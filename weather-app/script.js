@@ -17,6 +17,13 @@ function updateTime(timestamp) {
   }
   return `Last updated: ${day} ${hours}:${minutes}`;
 }
+
+function forecastFormatDay(timestamp) {
+  let date = new Date(timestamp * 1000);
+  let day = date.getDay();
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+  return days[day];
+}
 let apiKey = "0065c92bb38o03d36835f9t248bba38f";
 
 function showForecast(response) {
@@ -30,11 +37,17 @@ function showForecast(response) {
       forecastHTML +
       `
     <div class="col">
-      <div class="forecast-day">${forecastDay.time}</div>
-          <img src ="http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${forecastDay.condition.icon}.png"/>
+      <div class="forecast-day">${forecastFormatDay(forecastDay.time)}</div>
+          <img src ="http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${
+            forecastDay.condition.icon
+          }.png"/>
             <div class="forecast-range">
-              <span class="temperature-max">${forecastDay.temperature.maximum}</span>
-              <span class="temperature-min">${forecastDay.temperature.minimum}</span>
+              <span class="temperature-max">${
+                forecastDay.temperature.maximum
+              }</span>
+              <span class="temperature-min">${
+                forecastDay.temperature.minimum
+              }</span>
             </div>
     </div>`;
   });
